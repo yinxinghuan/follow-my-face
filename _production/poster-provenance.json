@@ -1,0 +1,9 @@
+{
+  "endpoint": "https://chat.aiwaves.tech/aigram/api/gen-image",
+  "origin": "https://aigram.app",
+  "prompt": "Refine the supplied square 1970s television game-show poster. Preserve the exact same curly-haired white male contestant, his alarmed funny face, his arm pointing LEFT, the red left door, blue right door, tactile cream cardboard walls, and the giant mustard arrow pointing RIGHT. Preserve exactly one perfectly spelled title FOLLOW MY FACE in huge bold black letters across the upper safe area. Remove the number 22 from the arrow and leave that part plain yellow. Completely remove the black pseudo-writing and numbers from the upper-right corner. Completely remove the white badge, arrows, numbers, smiley, microphone and podium from the bottom. Replace the lower 22 percent with quiet empty cream/red/blue cardboard floor texture containing no objects. Allow absolutely no text, letters, numbers, glyphs, logos or pseudo-writing anywhere except the single title FOLLOW MY FACE. No Chinese, no watermark, no phone, no app UI. Keep the man's face and the red-versus-blue contradiction crisp at 160x160.",
+  "ref_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785586830565666.webp",
+  "result_url": "https://cdn.aiwaves.tech/prod/telegram/avatar/0/1785587038897534.webp",
+  "source": "_production/poster-source.webp",
+  "output": "public/poster.png"
+}
