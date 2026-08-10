@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { callAigramAPI, isInAigram, telegramId } from '@shared/runtime';
+import { callAigramAPI, isInAigramNow, getTelegramId } from '@shared/runtime';
 import type { Identity } from '../types';
 
 type ProfileResponse = { data?: { name?: string; user_name?: string; head_url?: string } };
@@ -12,18 +12,18 @@ export function useIdentity() {
   const serial = useRef(0);
   const [identity, setIdentity] = useState<Identity>({
     name: queryName || 'AlterU', avatarUrl: queryAvatar || fallbackAvatar,
-    status: isInAigram && !queryName && !queryAvatar ? 'loading' : 'ready',
+    status: isInAigramNow() && !queryName && !queryAvatar ? 'loading' : 'ready',
   });
 
   const load = useCallback(async () => {
-    if (!isInAigram || !telegramId || queryName || queryAvatar) {
+    if (!isInAigramNow() || !getTelegramId()! || queryName || queryAvatar) {
       setIdentity({ name: queryName || 'AlterU', avatarUrl: queryAvatar || fallbackAvatar, status: 'ready' });
       return;
     }
     const request = ++serial.current;
     try {
       const response = await callAigramAPI<ProfileResponse>(
-        `/note/telegram/user/get/info/by/telegram_id?telegram_id=${encodeURIComponent(telegramId)}`, 'GET',
+        `/note/telegram/user/get/info/by/telegram_id?telegram_id=${encodeURIComponent(getTelegramId()!)}`, 'GET',
       );
       if (request !== serial.current) return;
       const name = response.data?.name?.trim() || response.data?.user_name?.trim();
