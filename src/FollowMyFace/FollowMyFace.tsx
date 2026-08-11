@@ -20,7 +20,7 @@ export function FollowMyFace() {
   const [stats, setStats] = useState<RunStats>(EMPTY_STATS);
   const [remainingMs, setRemainingMs] = useState(RUN_MS);
   const [muted, setMuted] = useState(false);
-  const [bestScore, setBestScore] = useState(() => Number(localStorage.getItem('follow_my_face_best') || 0));
+  const [bestScore, setBestScore] = useState(() => Number(alteruLocalStorage.getItem('follow_my_face_best') || 0));
   const phaseRef = useRef<Phase>('cover');
   const cueRef = useRef(cue);
   const statsRef = useRef(stats);
@@ -36,7 +36,7 @@ export function FollowMyFace() {
     locked.current = true;
     const final = statsRef.current;
     if (final.score > bestScore) {
-      localStorage.setItem('follow_my_face_best', String(final.score));
+      alteruLocalStorage.setItem('follow_my_face_best', String(final.score));
       setBestScore(final.score);
     }
     commitPhase('result');

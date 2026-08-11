@@ -1,7 +1,7 @@
 type Locale = 'zh' | 'en';
 type Vars = Record<string, string | number>;
 
-const saved = localStorage.getItem('game_locale');
+const saved = alteruLocalStorage.getItem('game_locale');
 export const locale: Locale = saved === 'zh' || saved === 'en'
   ? saved
   : navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en';
